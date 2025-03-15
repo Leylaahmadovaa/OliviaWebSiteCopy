@@ -17,6 +17,10 @@ import Header from "@components/Header";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/x-icon" href="https://olivia.az/media/favicon/stores/2/36x36.png"/>
+        <title>Olivia Beauty &amp; Care</title>
+      </head>
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
