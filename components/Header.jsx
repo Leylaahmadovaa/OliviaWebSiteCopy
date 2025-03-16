@@ -74,7 +74,7 @@ export default function Header() {
       </div>
       {/* 3rd */}
       <div className="border-t-2 border-b-2 h-[50px] w-full px-[50px] flex items-center">
-        <ul className="flex gap-[22px] text-[15.5px]">
+        <ul className="flex gap-[22px] text-[15px]">
           <li className="cursor-pointer">Kampaniya</li>
           <li className="cursor-pointer">Brands</li>
           <li className="cursor-pointer">Makiyaj</li>
