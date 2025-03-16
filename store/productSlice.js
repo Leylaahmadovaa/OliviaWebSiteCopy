@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts', // Action type
   async () => {
-    const response = await fetch('https://oliviacopy.netlify.app/api/products');
+    const response = await fetch('http://localhost:3000/api/products');
     const data = await response.json();
     return data; // Return the product data
   }
