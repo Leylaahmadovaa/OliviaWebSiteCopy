@@ -5,23 +5,20 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Carousel } from "@node_modules/antd/es";
 import Link from "@node_modules/next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../store/productSlice";
 export default function Home() {
-  const [products, setProducts] = useState([]);
   const [banners, setBanners] = useState([]);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/products");
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await res.json();
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
+  const dispatch = useDispatch();
+
+  // Step 1: Access product state using useSelector
+  const { products, loading, error } = useSelector((state) => state.products);
+
+  // Step 2: Dispatch the fetchProducts action when the component mounts
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const fetchBanners = async () => {
     try {
@@ -37,7 +34,6 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    fetchProducts();
     fetchBanners();
   }, []);
   return (
@@ -79,7 +75,10 @@ export default function Home() {
           </ul>
           {/* products */}
 
-          {products && (
+          {loading&&<div>Loading...</div>}
+          {error &&<div>Error: {error}</div>}
+          {!products.length&& <div>No products available</div>}
+          {products.length && (
             <div className="mt-[30px]">
               <Carousel
                 slidesToShow={6}
@@ -116,12 +115,12 @@ export default function Home() {
             </div>
           )}
           {/* button */}
-          <Link href='/products'>
-          <div className="flex justify-center">
-            <p className="w-[300px] text-center bg-white mt-[20px] py-[10px] cursor-pointer">
-              Bütün təklifləri gör
-            </p>
-          </div>
+          <Link href="/products">
+            <div className="flex justify-center">
+              <p className="w-[300px] text-center bg-white mt-[20px] py-[10px] cursor-pointer">
+                Bütün təklifləri gör
+              </p>
+            </div>
           </Link>
         </div>
       </div>

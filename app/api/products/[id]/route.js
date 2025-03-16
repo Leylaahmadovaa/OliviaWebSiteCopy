@@ -10,7 +10,7 @@ const connection = await mysql.createPool({
 export async function GET(req, { params }) {
   try {
     const [rows] = await connection.execute(
-      "SELECT * FROM products WHERE id = ?",
+      "SELECT * FROM PRODUCTS WHERE id = ?",
       [params.id]
     );
 

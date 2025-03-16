@@ -3,32 +3,41 @@ import React from "react";
 import { FontAwesomeIcon } from "@node_modules/@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../store/productSlice';
+import Link from "@node_modules/next/link";
 const Products = () => {
-    const [products, setProducts] = useState([]);
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/products");
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
+    const dispatch = useDispatch();
+
+    // Step 1: Access product state using useSelector
+    const { products, loading, error } = useSelector((state) => state.products);
+  
+    // Step 2: Dispatch the fetchProducts action when the component mounts
+    useEffect(() => {
+      dispatch(fetchProducts());
+    }, [dispatch]);
+
+    if (loading) {
+        return <div>Loading...</div>;
       }
-      const data = await res.json();
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+    
+      if (error) {
+        return <div>Error: {error}</div>;
+      }
+    
+      if (!products.length) {
+        return <div>No products available</div>;
+      }
   return (
     products && (
       <div className="grid grid-cols-6 mt-[30px] bg-[#eeeff1] pt-[50px]">
           {products.map((product) => (
+            <Link 
+            key={product.id}
+            href={`/products/`+product.id}>
             <div
-              key={product.id}
+              
               className="pr-[15px] w-[217px] h-[427px] relative"
             >
               <FontAwesomeIcon
@@ -49,6 +58,7 @@ const Products = () => {
                 </div>
               </div>
             </div>
+            </Link>
           ))}
       </div>
     )
