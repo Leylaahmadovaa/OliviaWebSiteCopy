@@ -4,7 +4,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Carousel } from "@node_modules/antd/es";
-
+import Link from "@node_modules/next/link";
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [banners, setBanners] = useState([]);
@@ -48,7 +48,7 @@ export default function Home() {
           dots={true}
           infinite={true}
           speed={500}
-          slidesToShow={4} 
+          slidesToShow={4}
           slidesToScroll={1}
           autoplay={true}
           className="w-[1380px]"
@@ -56,7 +56,7 @@ export default function Home() {
           {banners &&
             banners.map((banner) => (
               <img
-              key={banner.id}
+                key={banner.id}
                 className="pr-[15px]"
                 src={banner.img}
                 alt={`banner ` + banner.id}
@@ -78,38 +78,51 @@ export default function Home() {
             <li>Göz laynerləri</li>
           </ul>
           {/* products */}
+
           {products && (
-            <div className="grid grid-cols-6 mt-[30px]">
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className="w-[217px] h-[427px] relative bg-white"
-                >
-                  <FontAwesomeIcon
-                    className="absolute right-[15px] top-[15px]"
-                    width={20}
-                    icon={faHeart}
-                  />
-                  <img src={product.img} alt="product" />
-                  <p>{product.brand}</p>
-                  <p>{product.title}</p>
-                  <div className="flex justify-between">
-                    <div>
-                      <p>{product.weight} ml</p>
-                      <p>{product.price} &#x20BC;</p>
+            <div className="mt-[30px]">
+              <Carousel
+                slidesToShow={6}
+                arrows={true}
+                slidesToScroll={1}
+                draggable={true}
+                className="w-[1480px] px-[20px]"
+              >
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="pr-[15px] w-[217px] h-[427px] relative"
+                  >
+                    <FontAwesomeIcon
+                      className="absolute right-[15px] top-[15px]"
+                      width={20}
+                      icon={faHeart}
+                    />
+                    <img src={product.img} alt="product" />
+                    <div className="bg-white">
+                      <p>{product.brand}</p>
+                      <p>{product.title}</p>
+                      <div className="flex justify-between">
+                        <div>
+                          <p>{product.weight} ml</p>
+                          <p>{product.price} &#x20BC;</p>
+                        </div>
+                        <FontAwesomeIcon width={20} icon={faCartShopping} />
+                      </div>
                     </div>
-                    <FontAwesomeIcon width={20} icon={faCartShopping} />
                   </div>
-                </div>
-              ))}
+                ))}
+              </Carousel>
             </div>
           )}
           {/* button */}
+          <Link href='/products'>
           <div className="flex justify-center">
             <p className="w-[300px] text-center bg-white mt-[20px] py-[10px] cursor-pointer">
               Bütün təklifləri gör
             </p>
           </div>
+          </Link>
         </div>
       </div>
     </>
