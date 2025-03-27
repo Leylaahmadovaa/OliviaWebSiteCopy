@@ -1,88 +1,20 @@
-import mysql from "mysql2/promise";
-
-const connection = await mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
-
 export async function GET() {
-  try {
-    const [rows] = await connection.execute("SELECT * FROM products");
-    return Response.json(rows);
-  } catch (error) {
-    return Response.json(
-      { error: "Verilənlər bazası xətası" },
-      { status: 500 }
-    );
-  }
+  return new Response(
+    JSON.stringify({
+      products: [
+        {
+          id: 1,
+          image: "https://olivia.az/media/catalog/product/cache/ec3348cd707f11bd7a951e83328510dc/n/e/new_project_-_2023-05-15t163100.055.webp",
+          title: "Tuş Paese Liloosh Qara",
+          brand: "PAESE",
+          weight: "10.5 ml",
+          price: 17.99,
+        },
+      ],
+    }),
+    {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    }
+  );
 }
-
-// export async function POST(req) {
-//   try {
-//     const body = await req.json();
-//     const {
-//       Category,
-//       Name,
-//       ShortDescription,
-//       LongDescription,
-//       FrontPhoto,
-//       BackPhoto,
-//       IssuingCountry,
-//       Composition,
-//       Quality,
-//       Denomination,
-//       Year,
-//       Weight,
-//       Price,
-//     } = body;
-
-//     const query = `INSERT INTO coins (Category, Name, ShortDescription, LongDescription, FrontPhoto, BackPhoto, IssuingCountry, Composition, Quality, Denomination, Year, Weight, Price, ViewStatistics) 
-//                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '0');`;
-
-//     const [result] = await connection.execute(query, [
-//       Category,
-//       Name,
-//       ShortDescription,
-//       LongDescription,
-//       FrontPhoto,
-//       BackPhoto,
-//       IssuingCountry,
-//       Composition,
-//       Quality,
-//       Denomination,
-//       Year,
-//       Weight,
-//       Price,
-//     ]);
-
-//     return Response.json(
-//       {
-//         message: "Yeni qəpik əlavə olundu!",
-//         coin: {
-//           id: result.insertId,
-//           Category,
-//           Name,
-//           ShortDescription,
-//           LongDescription,
-//           FrontPhoto,
-//           BackPhoto,
-//           IssuingCountry,
-//           Composition,
-//           Quality,
-//           Denomination,
-//           Year,
-//           Weight,
-//           Price,
-//         },
-//       },
-//       { status: 201 }
-//     );
-//   } catch (error) {
-//     return Response.json(
-//       { error: "Verilənlər bazası xətası" },
-//       { status: 500 }
-//     );
-//   }
-// }

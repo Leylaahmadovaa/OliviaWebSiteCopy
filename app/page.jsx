@@ -9,30 +9,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../store/productSlice";
 export default function Home() {
   const [banners, setBanners] = useState([]);
-
   const dispatch = useDispatch();
-
-  // Step 1: Access product state using useSelector
-  const { products, loading, error } = useSelector((state) => state.products);
-
-  // Step 2: Dispatch the fetchProducts action when the component mounts
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  const { products, loading, error } = useSelector((state) => state.products.products);
 
   const fetchBanners = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/banners");
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await res.json();
+      const res = await fetch("/api/banners");
+      if (!res.ok) throw new Error("Failed to fetch data"); 
+      const data = await res.json(); 
+      setBanners(data.banners);
       console.log(data);
-      setBanners(data);
+      
     } catch (error) {
       console.error("Fetch error:", error);
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   useEffect(() => {
     fetchBanners();
   }, []);
@@ -48,13 +44,14 @@ export default function Home() {
           slidesToScroll={1}
           autoplay={true}
           className="w-[1380px]"
+          draggable={true}
         >
           {banners &&
             banners.map((banner) => (
               <img
                 key={banner.id}
                 className="pr-[15px]"
-                src={banner.img}
+                src={banner.url}
                 alt={`banner ` + banner.id}
               />
             ))}
@@ -74,11 +71,9 @@ export default function Home() {
             <li>Göz laynerləri</li>
           </ul>
           {/* products */}
-
-          {loading&&<div>Loading...</div>}
-          {error &&<div>Error: {error}</div>}
-          {!products.length&& <div>No products available</div>}
-          {products.length && (
+          {loading && <p>Loading...</p>}
+          {error && <p>Error: {error}</p>}
+          {products && products.length && (
             <div className="mt-[30px]">
               <Carousel
                 slidesToShow={6}
@@ -90,23 +85,25 @@ export default function Home() {
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="pr-[15px] w-[217px] h-[427px] relative"
+                    className="pr-[15px] w-[217px] h-[440px] relative bg-white"
                   >
                     <FontAwesomeIcon
-                      className="absolute right-[15px] top-[15px]"
+                      className="absolute right-[15px] z-[1] top-[15px] text-gray-400 text-[25px]"
                       width={20}
                       icon={faHeart}
                     />
-                    <img src={product.img} alt="product" />
-                    <div className="bg-white">
-                      <p>{product.brand}</p>
-                      <p>{product.title}</p>
-                      <div className="flex justify-between">
+                      <img src={product.image} alt="product" className="translate-x-2 mt-[50px]" />
+                    <div className="bg-white h-[170px] flex flex-col justify-between pt-[50px] pl-[20px]">
+                      <div>
+                      <p className="text-gray-500 text-[12px]">{product.brand}</p>
+                      <p className="font-semibold">{product.title}</p>
+                      </div>
+                      <div className="flex justify-between items-center">
                         <div>
-                          <p>{product.weight} ml</p>
-                          <p>{product.price} &#x20BC;</p>
+                          <p className="text-gray-500 text-[11px]">{product.weight}</p>
+                          <p className="font-bold mt-[2px] mb-[20px]">{product.price} &#x20BC;</p>
                         </div>
-                        <FontAwesomeIcon width={20} icon={faCartShopping} />
+                        <FontAwesomeIcon width={20} icon={faCartShopping} className="text-[20px] text-gray-400"/>
                       </div>
                     </div>
                   </div>

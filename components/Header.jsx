@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLessThan,
@@ -6,25 +6,26 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
-// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 export default function Header() {
-  // const fetchCoins = async () => {
-  //     try {
-  //         const res = await fetch("http://localhost:3001/api/coins/2");
-  //         if (!res.ok) {
-  //             throw new Error("Network response was not ok");
-  //         }
-  //         const data = await res.json();
-  //         console.log(data);
-  //     } catch (error) {
-  //         console.error("Fetch error:", error);
-  //     }
-  // };
-  // useEffect(()=>{
+  const [products, setProducts] = useState([]);
 
-  //     fetchCoins();
-  // },[])
+  // API-dən məlumat çəkmək üçün fetch istifadə edirik
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch("/api/products");  // API endpointini çağırırıq
+      if (!res.ok) throw new Error("Failed to fetch data");  // Əgər uğursuz olarsa, xətanı yaxalayırıq
+      const data = await res.json();  // JSON formatında məlumat alırıq
+      setProducts(data.products);  // Məlumatı state-ə əlavə edirik
+    } catch (error) {
+      console.error("Fetch error:", error);  // Xətaları konsola yazdırırıq
+    }
+  };
 
+  // Komponent mount olduqda fetchProducts funksiyasını çağırırıq
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <>
       {/* 1st */}
