@@ -1,7 +1,7 @@
 export default async function ProductDetail({ params }) {
   const { id } = await params; // URL-dən gələn ID
 
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const res = await fetch(`https://olivia-web-site-copy.vercel.app/api/products/${id}`, {
     cache: "no-store", // SSR üçün fresh data gətir
   });
 
