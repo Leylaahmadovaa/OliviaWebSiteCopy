@@ -6,26 +6,8 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useEffect, useState } from 'react';
 export default function Header() {
-  const [products, setProducts] = useState([]);
 
-  // API-dən məlumat çəkmək üçün fetch istifadə edirik
-  const fetchProducts = async () => {
-    try {
-      const res = await fetch("/api/products");  // API endpointini çağırırıq
-      if (!res.ok) throw new Error("Failed to fetch data");  // Əgər uğursuz olarsa, xətanı yaxalayırıq
-      const data = await res.json();  // JSON formatında məlumat alırıq
-      setProducts(data.products);  // Məlumatı state-ə əlavə edirik
-    } catch (error) {
-      console.error("Fetch error:", error);  // Xətaları konsola yazdırırıq
-    }
-  };
-
-  // Komponent mount olduqda fetchProducts funksiyasını çağırırıq
-  useEffect(() => {
-    fetchProducts();
-  }, []);
   return (
     <>
       {/* 1st */}
@@ -63,12 +45,12 @@ export default function Header() {
           />
         </div>
         <ul className="text-[14px] flex items-center gap-[30px]">
-          <li className="flex gap-[10px]">
-            <FontAwesomeIcon icon={faHeart} className="w-[20px]" />
+          <li className="flex gap-[10px] items-center">
+            <FontAwesomeIcon icon={faHeart} className="w-[20px] text-[20px]" />
             Seçilmişlər
           </li>
-          <li className="flex gap-[10px]">
-            <FontAwesomeIcon icon={faCartShopping} className="w-[20px]" />
+          <li className="flex gap-[10px] items-center">
+            <FontAwesomeIcon icon={faCartShopping} className="w-[20px] text-[20px]" />
             Səbət
           </li>
         </ul>

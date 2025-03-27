@@ -58,7 +58,6 @@ import { NextResponse } from "next/server";
         },
       ]
 
-// ✅ GET request üçün məhsul gətirən API
 export async function GET(req, { params }) {
     const id = Number(params.id);
   const product = products.find((p) => p.id === id);
