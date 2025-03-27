@@ -10,16 +10,17 @@ import { fetchProducts } from "../store/productSlice";
 export default function Home() {
   const [banners, setBanners] = useState([]);
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.products.products);
+  const { products, loading, error } = useSelector(
+    (state) => state.products.products
+  );
 
   const fetchBanners = async () => {
     try {
       const res = await fetch("/api/banners");
-      if (!res.ok) throw new Error("Failed to fetch data"); 
-      const data = await res.json(); 
+      if (!res.ok) throw new Error("Failed to fetch data");
+      const data = await res.json();
       setBanners(data.banners);
       console.log(data);
-      
     } catch (error) {
       console.error("Fetch error:", error);
     }
@@ -58,17 +59,17 @@ export default function Home() {
         </Carousel>
       </div>
       {/* bannerdən sonrakı hissələr */}
-      <div className="bg-[#eeeff1] py-[30px]">
+      <div className="bg-[#eeeff1] py-[30px] mt-[20px]">
         {/* Satış liderləri */}
-        <div className="ml-[30px] mt-[20px]">
+        <div className="ml-[75px] mt-[20px]">
           <h1 className="text-[25px] mb-[30px]">Satış liderləri</h1>
           {/* sub headers */}
-          <ul className="flex gap-[30px] text-[18px]">
-            <li>Kirpiklər üçün tuş</li>
-            <li>Dodaqlar üçün</li>
-            <li>Tonal kremlər</li>
-            <li>Konsilerlər</li>
-            <li>Göz laynerləri</li>
+          <ul className="flex gap-[30px] text-gray-500 text-[18px]">
+            <li className="cursor-pointer text-black font-semibold">Kirpiklər üçün tuş</li>
+            <li className="cursor-pointer">Dodaqlar üçün</li>
+            <li className="cursor-pointer">Tonal kremlər</li>
+            <li className="cursor-pointer">Konsilerlər</li>
+            <li className="cursor-pointer">Göz laynerləri</li>
           </ul>
           {/* products */}
           {loading && <p>Loading...</p>}
@@ -80,31 +81,47 @@ export default function Home() {
                 arrows={true}
                 slidesToScroll={1}
                 draggable={true}
-                className="w-[1480px] px-[20px]"
+                className="w-[1400px]"
               >
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="pr-[15px] w-[217px] h-[440px] relative bg-white"
+                    className="pr-[15px] w-[217px] h-[450px] relative bg-white border-r-[18px] border-[#eeeff1]"
                   >
+                    <div>
                     <FontAwesomeIcon
                       className="absolute right-[15px] z-[1] top-[15px] text-gray-400 text-[25px]"
                       width={20}
                       icon={faHeart}
                     />
-                      <img src={product.image} alt="product" className="translate-x-2 mt-[50px]" />
+                    <img
+                      src={product.image}
+                      alt="product"
+                      className="translate-x-2 mt-[50px]"
+                    />
                     <div className="bg-white h-[170px] flex flex-col justify-between pt-[50px] pl-[20px]">
                       <div>
-                      <p className="text-gray-500 text-[12px]">{product.brand}</p>
-                      <p className="font-semibold">{product.title}</p>
+                        <p className="text-gray-500 text-[12px]">
+                          {product.brand}
+                        </p>
+                        <p className="font-semibold">{product.title}</p>
                       </div>
                       <div className="flex justify-between items-center">
                         <div>
-                          <p className="text-gray-500 text-[11px]">{product.weight}</p>
-                          <p className="font-bold mt-[2px] mb-[20px]">{product.price} &#x20BC;</p>
+                          <p className="text-gray-500 text-[11px]">
+                            {product.weight}
+                          </p>
+                          <p className="font-bold mt-[2px] mb-[20px]">
+                            {product.price} &#x20BC;
+                          </p>
                         </div>
-                        <FontAwesomeIcon width={20} icon={faCartShopping} className="text-[20px] text-gray-400"/>
+                        <FontAwesomeIcon
+                          width={20}
+                          icon={faCartShopping}
+                          className="text-[20px] text-gray-400"
+                        />
                       </div>
+                    </div>
                     </div>
                   </div>
                 ))}
@@ -112,13 +129,13 @@ export default function Home() {
             </div>
           )}
           {/* button */}
-          <Link href="/products">
-            <div className="flex justify-center">
+          <div className="flex justify-center">
+            <Link href="/products">
               <p className="w-[300px] text-center bg-white mt-[20px] py-[10px] cursor-pointer">
                 Bütün təklifləri gör
               </p>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </div>
     </>

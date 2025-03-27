@@ -1,7 +1,5 @@
-export async function GET() {
-  return new Response(
-    JSON.stringify({
-      products: [
+import { NextResponse } from "next/server";
+ const products= [
         {
           id: 1,
           image: "https://olivia.az/media/catalog/product/cache/ec3348cd707f11bd7a951e83328510dc/n/e/new_project_-_2023-05-15t163100.055.webp",
@@ -58,11 +56,16 @@ export async function GET() {
           weight: "10.5 ml",
           price: 17.99,
         },
-      ],
-    }),
-    {
-      headers: { "Content-Type": "application/json" },
-      status: 200,
-    }
-  );
+      ]
+
+// ✅ GET request üçün məhsul gətirən API
+export async function GET(req, { params }) {
+    const id = Number(params.id);
+  const product = products.find((p) => p.id === id);
+
+  if (!product) {
+    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+  }
+
+  return NextResponse.json(product);
 }
