@@ -80,6 +80,46 @@ const products = [
     price: 4.99,
     category: "Dodaqlar üçün",
   },
+  {
+    id: 9,
+    image:
+      "https://olivia.az/media/catalog/product/cache/ec3348cd707f11bd7a951e83328510dc/n/e/new_project_-_2023-05-08t113838.230.webp",
+    title: "Dodaq Karandaşı Luxvisage 54",
+    brand: "LUXVISAGE",
+    weight: "1.75 gr",
+    price: 6.99,
+    category: "Dodaqlar üçün",
+  },
+  {
+    id: 10,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/-/_-_2023-05-15t113100.522.png",
+    title: "Dodaq Parladıcı Eveline Fruity Smoothie Böyürtkən 12 ml",
+    brand: "EVELINE",
+    weight: "12 ml",
+    price: 3.79,
+    category: "Dodaqlar üçün",
+  },
+  {
+    id: 11,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-dp-0290-1.png",
+    title: "Dodaq Boyası Maybelline Super Stay Vinyl Ink 15",
+    brand: "MAYBELLINE",
+    weight: "4.2 ml",
+    price: 20.69,
+    category: "Dodaqlar üçün",
+  },
+  {
+    id: 12,
+    image:
+      "https://olivia.az/media/catalog/product/cache/ec3348cd707f11bd7a951e83328510dc/0/0/00-00008536_1.webp",
+    title: "Dodaq Boyası Maybelline Super Stay Vinyl Ink 35",
+    brand: "MAYBELLINE",
+    weight: "4.2 ml",
+    price: 20.69,
+    category: "Dodaqlar üçün",
+  },
 ];
 
 export async function GET(req, { params }) {
