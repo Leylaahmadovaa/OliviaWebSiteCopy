@@ -210,6 +210,36 @@ const products = [
     price: 22.79,
     category: "Tonal kremlər",
   },
+  {
+    id: 22,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/-/_-_2023-05-07t222044.758.png",
+    title: "Konsiler Belordesign Soft Focus 102",
+    brand: "BELORDESIGN",
+    weight: "7 gr",
+    price: 7.29,
+    category: "Konsilerlər",
+  },
+  {
+    id: 23,
+    image:
+      "https://olivia.az/media/catalog/product/cache/ec3348cd707f11bd7a951e83328510dc/_/d/_d0_9d_d0_be_d0_b2_d1_8b_d0_b9-_d0_bf_d1_80_d0_be_d0_b5_d0_ba_d1_82-2023-05-07t225906.938_png.webp",
+    title: "Konsiler Eveline Magical Perfection 01",
+    brand: "EVELINE",
+    weight: "15 ml",
+    price: 7.89,
+    category: "Konsilerlər",
+  },
+  {
+    id: 24,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/3/_3__414_1.png",
+    title: "Konsiler Eveline Magical Perfection 02",
+    brand: "EVELINE",
+    weight: "15 ml",
+    price: 7.89,
+    category: "Konsilerlər",
+  },
 ];
 
 export async function GET(req, { params }) {
