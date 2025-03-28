@@ -122,6 +122,26 @@ export async function GET() {
           price: 20.69,
           category: "Dodaqlar üçün",
         },
+        {
+          id: 13,
+          image:
+            "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-lg-0131-1.png",
+          title: "Dodaq Parladıcı Maybelline Lifter Gloss 002",
+          brand: "MAYBELLINE",
+          weight: "5.4 ml",
+          price: 16.89,
+          category: "Dodaqlar üçün",
+        },
+        {
+          id: 14,
+          image:
+            "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-lg-0133.png",
+          title: "Dodaq Parladıcı Maybelline Lifter Gloss 009",
+          brand: "MAYBELLINE",
+          weight: "5.4 ml",
+          price: 16.89,
+          category: "Dodaqlar üçün",
+        },
       ],
     }),
     {

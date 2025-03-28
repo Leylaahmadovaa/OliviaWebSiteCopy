@@ -189,7 +189,7 @@ export default function Home() {
                           key={product.id}
                           className="pr-[15px] w-[217px] h-[450px] relative bg-white border-r-[18px] border-[#eeeff1]"
                         >
-                          <Link href={`/products/${product.id}`}>
+                          <Link href={`/products/${product.id}`} className="hover:text-inherit">
                             <div>
                               <FontAwesomeIcon
                                 className="absolute right-[15px] z-[1] top-[15px] text-gray-400 text-[25px]"
