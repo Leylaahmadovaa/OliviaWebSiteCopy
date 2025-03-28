@@ -120,6 +120,96 @@ const products = [
     price: 20.69,
     category: "Dodaqlar üçün",
   },
+  {
+    id: 13,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-lg-0131-1.png",
+    title: "Dodaq Parladıcı Maybelline Lifter Gloss 002",
+    brand: "MAYBELLINE",
+    weight: "5.4 ml",
+    price: 16.89,
+    category: "Dodaqlar üçün",
+  },
+  {
+    id: 14,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-lg-0133.png",
+    title: "Dodaq Parladıcı Maybelline Lifter Gloss 009",
+    brand: "MAYBELLINE",
+    weight: "5.4 ml",
+    price: 16.89,
+    category: "Dodaqlar üçün",
+  },
+  {
+    id: 15,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/d/_d0_9d_d0_be_d0_b2_d1_8b_d0_b9-_d0_bf_d1_80_d0_be_d0_b5_d0_ba_d1_82-136_png_1.png",
+    title: "Tonal Krem Pierre Rene Advanced Lift Fluid 03",
+    brand: "PIERRE RENE",
+    weight: "30 ml",
+    price: 29.99,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 16,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/d/_d0_9d_d0_be_d0_b2_d1_8b_d0_b9-_d0_bf_d1_80_d0_be_d0_b5_d0_ba_d1_82-137_png_1.png",
+    title: "Tonal Krem Pierre Rene Advanced Lift Fluid 04",
+    brand: "PIERRE RENE",
+    weight: "30 ml",
+    price: 29.99,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 17,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/d/_d0_9d_d0_be_d0_b2_d1_8b_d0_b9-_d0_bf_d1_80_d0_be_d0_b5_d0_ba_d1_82-139_png.png",
+    title: "Tonal Krem Pierre Rene Skin Balance Cover 19",
+    brand: "PIERRE RENE",
+    weight: "30 ml",
+    price: 26.99,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 18,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/_/1/_18__12_4.png",
+    title: "Tonal Krem Paese Long Cover Fluid Ivory 0.5",
+    brand: "PAESE",
+    weight: "30 ml",
+    price: 24.99,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 19,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-tk-0081-1.png",
+    title: "Tonal Krem Belordesign BB Funhouse Skin Teen 51",
+    brand: "BELORDESIGN",
+    weight: "25 gr",
+    price: 15.99,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 20,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-tk-0136.png",
+    title: "Tonal Krem Loreal Infaillible 130",
+    brand: "LOREAL",
+    weight: "30 ml",
+    price: 22.79,
+    category: "Tonal kremlər",
+  },
+  {
+    id: 21,
+    image:
+      "https://olivia.az/media/catalog/product/cache/d2b8752f559224c02f64bf8d7f0b2ee3/t/m/tm-dg-csm-1119-tk-0137.png",
+    title: "Tonal Krem Loreal Infaillible 120",
+    brand: "PIERRE RENE",
+    weight: "30 ml",
+    price: 22.79,
+    category: "Tonal kremlər",
+  },
 ];
 
 export async function GET(req, { params }) {
