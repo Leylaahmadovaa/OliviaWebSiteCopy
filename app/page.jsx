@@ -8,8 +8,8 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../store/productSlice";
 import { categoryAtSaleLeadersActions } from "../store/categoryAtSaleLeadersSlice";
+import useFetch from "@hooks/useFetch";
 export default function Home() {
-  const [banners, setBanners] = useState([]);
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector(
     (state) => state.products.products
@@ -17,17 +17,8 @@ export default function Home() {
   const categoryAtSaleLeaders = useSelector(
     (state) => state.categoryAtSaleLeaders.currentCategoryAtSaleLeaders
   );
-
-  const fetchBanners = async () => {
-    try {
-      const res = await fetch("/api/banners");
-      if (!res.ok) throw new Error("Failed to fetch data");
-      const data = await res.json();
-      setBanners(data.banners);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
+  
+  const { data : banners, isPending, error:errorr }=useFetch("/api/banners")
 
   function handleChangeCategoryAtSatisLiderleri(category) {
     dispatch(
@@ -54,13 +45,10 @@ export default function Home() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-
-  useEffect(() => {
-    fetchBanners();
-  }, []);
   return (
     <>
       {/* banners */}
+      
       <div className="flex gap-[15px] px-[30px] ml-[40px] mt-[20px]">
         <Carousel
           dots={true}
@@ -72,6 +60,8 @@ export default function Home() {
           className="w-[1380px]"
           draggable={true}
         >
+          {errorr&& <div>{error}</div>}
+          {isPending&& <div></div>}
           {banners &&
             banners.map((banner) => (
               <img
